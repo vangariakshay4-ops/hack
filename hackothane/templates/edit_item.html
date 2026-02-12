@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Item</title>
+</head>
+<body>
+
+<h2>Edit Item</h2>
+
+<p>ID: {{ item[0] }}</p>
+<p>Title: {{ item[1] }}</p>
+<p>Description: {{ item[2] }}</p>
+<p>Status: {{ item[3] }}</p>
+
+<form method="POST">
+    <input type="text" name="title" value="{{ item[1] }}"><br><br>
+
+    <textarea name="description">{{ item[2] }}</textarea><br><br>
+
+    <select name="status">
+        <option value="Lost" {% if item[3] == 'Lost' %}selected{% endif %}>Lost</option>
+        <option value="Found" {% if item[3] == 'Found' %}selected{% endif %}>Found</option>
+    </select><br><br>
+
+    <button type="submit">Update</button>
+</form>
+
+<a href="/">Back</a>
+
+</body>
+</html>

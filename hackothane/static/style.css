@@ -1,0 +1,96 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.top-bar {
+    text-align: right;
+    margin-bottom: 15px;
+}
+
+.btn {
+    padding: 8px 12px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.search-form {
+    margin-bottom: 20px;
+}
+
+.search-form input {
+    padding: 6px;
+    width: 250px;
+}
+
+.search-form button {
+    padding: 6px 10px;
+}
+
+.card {
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.actions {
+    margin-top: 10px;
+}
+
+.edit-btn {
+    background: #ffc107;
+    padding: 5px 8px;
+    text-decoration: none;
+    color: black;
+    border-radius: 4px;
+}
+
+.delete-btn {
+    background: #dc3545;
+    padding: 5px 8px;
+    text-decoration: none;
+    color: white;
+    border-radius: 4px;
+}
+
+.lost-badge {
+    background: #ffcccc;
+    color: #b30000;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.found-badge {
+    background: #ccffcc;
+    color: #006600;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.claimed-badge {
+    background: #d9d9d9;
+    color: #333;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+.card:has(.claimed-badge) {
+    opacity: 0.8;
+}

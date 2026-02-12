@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Digital Lost & Found</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Digital Lost & Found Portal</h1>
+
+    <!-- Dashboard Stats -->
+    <div class="stats">
+        <p><strong>Total:</strong> {{ total }}</p>
+        <p><strong>Lost:</strong> {{ lost }}</p>
+        <p><strong>Found:</strong> {{ found }}</p>
+        <p><strong>Claimed:</strong> {{ claimed }}</p>
+    </div>
+
+    <!-- Add Button -->
+    <div class="top-bar">
+        <a class="btn" href="/add">+ Add Item</a>
+    </div>
+
+    <!-- Search + Status Filter -->
+    <form method="GET" class="search-form">
+
+        <input type="text" name="search"
+               value="{{ request.args.get('search', '') }}"
+               placeholder="Search items...">
+
+        <select name="status">
+            <option value="All"
+                {% if request.args.get('status') == 'All' %}selected{% endif %}>
+                All
+            </option>
+
+            <option value="Lost"
+                {% if request.args.get('status') == 'Lost' %}selected{% endif %}>
+                Lost
+            </option>
+
+            <option value="Found"
+                {% if request.args.get('status') == 'Found' %}selected{% endif %}>
+                Found
+            </option>
+
+            <option value="Claimed"
+                {% if request.args.get('status') == 'Claimed' %}selected{% endif %}>
+                Claimed
+            </option>
+        </select>
+
+        <button type="submit">Search</button>
+    </form>
+
+    <h2>Items</h2>
+
+    {% for item in items %}
+        <div class="card">
+
+            <!-- Image -->
+            {% if item[4] %}
+                <img src="{{ url_for('static', filename='uploads/' + item[4]) }}"
+                     width="150"
+                     style="border-radius:6px; margin-bottom:10px;">
+            {% endif %}
+
+            <h3>{{ item[1] }}</h3>
+
+            <!-- Status Badge -->
+            {% if item[3] == 'Lost' %}
+                <span class="lost-badge">Lost</span>
+            {% elif item[3] == 'Found' %}
+                <span class="found-badge">Found</span>
+            {% elif item[3] == 'Claimed' %}
+                <span class="claimed-badge">Claimed</span>
+            {% endif %}
+
+            <p>{{ item[2] }}</p>
+
+            <div class="actions">
+
+                {% if item[3] != 'Claimed' %}
+                    <a href="/claim/{{ item[0] }}" class="claim-btn">
+                        Mark as Claimed
+                    </a>
+
+                    <a href="/edit/{{ item[0] }}" class="edit-btn">
+                        Edit
+                    </a>
+
+                    <a href="/delete/{{ item[0] }}"
+                       onclick="return confirm('Are you sure?')"
+                       class="delete-btn">
+                        Delete
+                    </a>
+                {% else %}
+                    <p style="color:green; font-weight:bold;">
+                        ✅ This item has been claimed.
+                    </p>
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    {% else %}
+        <p>No items found.</p>
+    {% endfor %}
+
+</div>
+
+</body>
+</html>

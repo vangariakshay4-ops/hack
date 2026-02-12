@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Campus Booking</title>
+
+    <!-- CSS Path -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Campus Booking</div>
+
+    <nav>
+        <a href="../index.html">Home</a>
+    </nav>
+</header>
+
+<section class="hero">
+
+    <!-- Background Image -->
+    <img src="../assets/images/campus.jpg" class="hero-bg">
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
+
+    <!-- Login Form -->
+    <div class="hero-content">
+
+        <h1>User Login</h1>
+
+        <form class="login-form" action="login_process.php" method="POST">
+
+            <input type="email" name="email" placeholder="Enter Email" required>
+
+            <input type="password" name="password" placeholder="Enter Password" required>
+
+            <button type="submit" class="btn">Login</button>
+            
+            <p style="margin-top:10px;">
+    New user? <a href="register.html" style="color:white;">Register here</a>
+</p>
+
+        </form>
+
+    </div>
+
+</section>
+
+<footer>
+    <p>© Sai University Campus Booking</p>
+</footer>
+
+</body>
+</html>

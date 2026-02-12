@@ -1,0 +1,24 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../auth/login.html");
+    exit();
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+
+<h2>Welcome <?php echo $_SESSION['user_name']; ?></h2>
+
+<p>Login successful.</p>
+
+<a href="../auth/login.html">Logout</a>
+
+</body>
+</html>
